@@ -1,0 +1,21 @@
+import React, {Component} from 'react';
+
+export default class App extends Component {
+  render() {
+    return (
+      <header className="intro-header">
+          <div className="container">
+              <div className="row">
+                  <div className="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                      <div className="site-heading">
+                        <h1>Photo Blog</h1>
+                        <hr className="small" />
+                        <span className="subheading">Built with love, on Meteor</span>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </header>
+    );
+  }
+}
