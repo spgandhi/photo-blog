@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 
+import AccountsUIWrapper from '/imports/ui/AccountsUIWrapper.jsx';
+
 export default class Nav extends Component {
   render() {
     return (
@@ -11,6 +13,7 @@ export default class Nav extends Component {
                       Menu <i className="fa fa-bars"></i>
                   </button>
                   <a className="navbar-brand" href="index.html">Start Bootstrap</a>
+                  <AccountsUIWrapper />
               </div>
 
               <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">

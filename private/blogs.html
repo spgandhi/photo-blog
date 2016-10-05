@@ -1,0 +1,7 @@
+<div className="container">
+  {
+    this.getItems().map((post)=>(
+      <PostSingle key={post._id} post={post} />
+    ))
+  }
+</div>

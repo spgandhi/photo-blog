@@ -1,21 +1,54 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 
+import { Posts } from '/imports/models/model.js';
+
 export default class Add extends Component {
 
   handleSubmit(event){
       event.preventDefault();
 
-      var post = {};
-      var title = ReactDOM.findDOMNode(this.refs.title).value.trim();
-      var url = ReactDOM.findDOMNode(this.refs.url).value.trim();
-      var caption = ReactDOM.findDOMNode(this.refs.caption).value.trim();
-      console.log(title);
-      console.log(url);
-      console.log(caption);
+      var post = {
+        title: '',
+        url: '',
+        caption: ''
+      };
+
+      post.title = ReactDOM.findDOMNode(this.refs.title).value.trim();
+      post.url = ReactDOM.findDOMNode(this.refs.url).value.trim();
+      post.caption = ReactDOM.findDOMNode(this.refs.caption).value.trim();
+
+      if(post.title.length < 3){
+        console.log('title should be atleast 3 characters');
+        return;
+      }
+
+      if(post.url.length == 0){
+        console.log('please enter the url');
+        return;
+      }
+
+      console.log(post);
+      
+      Meteor.call('insert_post', post, function(error, result){
+
+        if(error)
+          console.log(error)
+        else
+          console.log(result);
+
+      });
+      // Posts.insert(post);
+      console.log('inserted');
+
+      ReactDOM.findDOMNode(this.refs.title).value = '';
+      ReactDOM.findDOMNode(this.refs.url).value = '';
+      ReactDOM.findDOMNode(this.refs.caption).value = '';
+
   }
 
   render() {
+
     return (
       <div className="container">
         <form>
