@@ -4,15 +4,10 @@ import Nav from '/imports/ui/Nav.jsx';
 import Header from '/imports/ui/Header.jsx';
 import Add from '/imports/ui/Add.jsx';
 import Blogs from '/imports/ui/Blogs.jsx';
-export default class App extends Component {
 
-  constructor(){
-    super();
+import { createContainer } from 'meteor/react-meteor-data';
 
-    this.state = {
-      user : Meteor.user()
-    }
-  }
+class App extends Component {
 
   render() {
     return (
@@ -20,10 +15,16 @@ export default class App extends Component {
         <Nav />
         <Header />
         {
-           this.state.user ? <Add /> : ''
+           this.props.user ? <Add /> : ''
         }
         <Blogs />
       </div>
     );
   }
 }
+
+export default createContainer(()=>{
+  return {
+    user : Meteor.user()
+  }
+}, App)
